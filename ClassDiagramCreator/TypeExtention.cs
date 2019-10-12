@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="TypeExtention.cs" company="TODO">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
+using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Linq;
 
 namespace ClassDiagramCreator
 {
+    /// <summary>
+    /// 型の拡張クラスです。
+    /// </summary>
     public static class TypeExtention
     {
+        /// <summary>
+        /// クラス図用の文字列を作成します。
+        /// </summary>
+        /// <param name="self">型です。</param>
+        /// <returns>文字列です。</returns>
         public static string ToUmlText(this Type self)
         {
             var result = new StringBuilder();
-            result.AppendLine($"{(self.IsEnum ? "enum" : self.IsInterface ? "interface" : self.IsAbstract ? "abstract class" : "class")} {self.Name}");
+            result.AppendLine($"{(self.IsEnum ? "enum" : self.IsInterface ? "interface" : self.IsAbstract ? "abstract class" : "class")} {self.GetNameForUml()}");
             result.AppendLine("{");
             result = CreateFieldInfos(self, result);
             result = CreateMethodInfos(self, result);
@@ -19,16 +32,30 @@ namespace ClassDiagramCreator
             return result.ToString();
         }
 
+        /// <summary>
+        /// クラス図用の名前を取得します。
+        /// </summary>
+        /// <param name="self">型です。</param>
+        /// <returns>クラス図用の名前です。</returns>
         public static string GetNameForUml(this Type self)
         {
             var genericArguments = self.GetGenericArguments().ToList();
             if (!genericArguments.Any())
+            {
                 return self.Name;
+            }
+
             var typeName = self.Name.Split('`')[0];
             var genericArgumentsText = string.Join(", ", genericArguments.Select(GetNameForUml));
             return $"{typeName}<{genericArgumentsText}>";
         }
 
+        /// <summary>
+        /// 関数情報を作成します。
+        /// </summary>
+        /// <param name="targetType">対象の型です。</param>
+        /// <param name="builder">つなげるビルダーです。</param>
+        /// <returns>ビルダーです。</returns>
         private static StringBuilder CreateMethodInfos(Type targetType, StringBuilder builder)
         {
             var result = new StringBuilder(builder.ToString());
@@ -43,6 +70,12 @@ namespace ClassDiagramCreator
             return result;
         }
 
+        /// <summary>
+        /// フィールドを作成します。
+        /// </summary>
+        /// <param name="targetType">対象の型です。</param>
+        /// <param name="builder">つなげるビルダーです。</param>
+        /// <returns>ビルダーです。</returns>
         private static StringBuilder CreateFieldInfos(Type targetType, StringBuilder builder)
         {
             var result = new StringBuilder(builder.ToString());

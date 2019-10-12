@@ -1,33 +1,60 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="BaseTypeRelationship.cs" company="TODO">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 
 namespace ClassDiagramCreator
 {
+    /// <summary>
+    /// 汎化や実現などの親子関係性です。
+    /// </summary>
     internal class BaseTypeRelationship
     {
-        private Type target;
-        private Type baseType;
+        /// <summary>
+        /// 子です。
+        /// </summary>
+        private readonly Type target;
 
+        /// <summary>
+        /// 親です。
+        /// </summary>
+        private readonly Type baseType;
+
+        /// <summary>
+        /// インスタンスを初期化します。
+        /// </summary>
+        /// <param name="target">対象クラス（子）</param>
+        /// <param name="baseType">基底の型（親）です。</param>
         public BaseTypeRelationship(Type target, Type baseType)
         {
             this.target = target;
             this.baseType = baseType;
         }
 
-        internal IEnumerable<Type> ToTypeList()
-        {
-            return new List<Type> { target, this.baseType};
-        }
-
+        /// <inheritdoc />
         public override string ToString()
         {
-            var relationText = target.IsInterface == this.baseType.IsInterface ? "<|--" : "<|..";
-            return $"{baseType.Name} {relationText} {target.Name}";
+            var relationText = this.target.IsInterface == this.baseType.IsInterface ? "<|--" : "<|..";
+            return $"{baseType.Name.Split('`')[0]} {relationText} {target.Name.Split('`')[0]}";
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
-            return ToString().GetHashCode();
+            return this.ToString().GetHashCode();
+        }
+
+        /// <summary>
+        /// 型の列挙にします。
+        /// </summary>
+        /// <returns>型の列挙です。</returns>
+        internal IEnumerable<Type> ToTypeList()
+        {
+            return new List<Type> { this.target, this.baseType };
         }
     }
 }
