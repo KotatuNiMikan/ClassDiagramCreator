@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +24,11 @@ namespace ClassDiagramCreator
         public static ClassDiagramCleator CreateInstance(string assemblyFile, string targetTypeName)
         {
             var assembly = Assembly.LoadFrom(assemblyFile);
-            return new ClassDiagramCleator(new List<Type> { typeof(HttpStyleUriParser) });
+            assembly.GetReferencedAssemblies()
+                .ToList()
+                .ForEach(referencedAssembly=> { Debug.WriteLine("CodeBase:" + referencedAssembly.CodeBase); });
+            
+            return new ClassDiagramCleator(assembly.DefinedTypes);
         }
 
         public void OutputFile(string file)

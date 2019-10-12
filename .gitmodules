@@ -1,0 +1,3 @@
+[submodule "TestData/Trial.WindowsFormsApp.TextEditor"]
+	path = TestData/Trial.WindowsFormsApp.TextEditor
+	url = https://github.com/KotatuNiMikan/Trial.WindowsFormsApp.TextEditor.git

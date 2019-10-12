@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ClassDiagramCreator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\WorkSpace_CSharp\\Trial.WindowsFormsApp.TextEditor\\Trial.WindowsFormsApp.TextEditor\\bin\\Debug\\Trial.WindowsFormsApp.TextEditor.exe"
+    }
+  }
+}
