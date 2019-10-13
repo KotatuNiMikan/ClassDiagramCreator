@@ -1,0 +1,1 @@
+dotnet test --logger:trx /p:CollectCoverage=true /p:CoverletOutputFormat="opencover" /p:CoverletOutput=TestResults/coverage
