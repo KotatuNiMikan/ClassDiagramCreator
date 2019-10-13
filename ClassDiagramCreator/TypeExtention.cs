@@ -14,7 +14,7 @@ namespace ClassDiagramCreator
     /// <summary>
     /// 型の拡張クラスです。
     /// </summary>
-    public static class TypeExtention
+    internal static class TypeExtention
     {
         /// <summary>
         /// クラス図用の文字列を作成します。

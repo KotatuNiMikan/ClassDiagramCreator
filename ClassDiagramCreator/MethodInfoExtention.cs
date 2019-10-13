@@ -4,6 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -12,7 +13,7 @@ namespace ClassDiagramCreator
     /// <summary>
     /// メソッドに関する拡張クラスです。
     /// </summary>
-    public static class MethodInfoExtention
+    internal static class MethodInfoExtention
     {
         /// <summary>
         /// クラス図用の文字列を作成します。
@@ -22,7 +23,7 @@ namespace ClassDiagramCreator
         public static string CreateUmlText(this MethodInfo methodInfo)
         {
             var parameters = methodInfo.GetParameters()
-                .Select(para => string.Format("{0}:{1}", para.Name, para.ParameterType.GetNameForUml()));
+                .Select(para => string.Format(CultureInfo.CurrentCulture, "{0}:{1}", para.Name, para.ParameterType.GetNameForUml()));
             return $"{GetAccesingTypeText(methodInfo)}{GetAttribute(methodInfo)}{methodInfo.Name}({string.Join(", ", parameters)}):{methodInfo.ReflectedType.GetNameForUml()}";
         }
 

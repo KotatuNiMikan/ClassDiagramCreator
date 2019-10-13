@@ -74,19 +74,28 @@ namespace ClassDiagramCreator
             return $"{this.target.GetNameForUml()} o-- {this.x.GetNameForUml()}";
         }
 
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return this.ToString().GetHashCode();
-        }
-
         /// <summary>
         /// 型のリストにします。
         /// </summary>
         /// <returns>型の列挙です。</returns>
-        internal IEnumerable<Type> ToTypeList()
+        public IEnumerable<Type> ToTypeList()
         {
             return new List<Type> { this.target, this.x };
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj)
+        {
+            return obj is PartOfRelationship relationship &&
+                   EqualityComparer<Type>.Default.Equals(this.target, relationship.target) &&
+                   EqualityComparer<Type>.Default.Equals(this.x, relationship.x) &&
+                   this.fieldsCount == relationship.fieldsCount;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.target, this.x, this.fieldsCount);
         }
     }
 }

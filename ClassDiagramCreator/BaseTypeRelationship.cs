@@ -35,17 +35,25 @@ namespace ClassDiagramCreator
             this.baseType = baseType;
         }
 
+        /// <inheritdoc/>
+        public override bool Equals(object obj)
+        {
+            return obj is BaseTypeRelationship relationship &&
+                   EqualityComparer<Type>.Default.Equals(this.target, relationship.target) &&
+                   EqualityComparer<Type>.Default.Equals(this.baseType, relationship.baseType);
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.target, this.baseType);
+        }
+
         /// <inheritdoc />
         public override string ToString()
         {
             var relationText = this.target.IsInterface == this.baseType.IsInterface ? "<|--" : "<|..";
             return $"{this.baseType.Name.Split('`')[0]} {relationText} {this.target.Name.Split('`')[0]}";
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return this.ToString().GetHashCode();
         }
 
         /// <summary>

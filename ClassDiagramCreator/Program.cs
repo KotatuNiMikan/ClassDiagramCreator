@@ -17,8 +17,8 @@ namespace ClassDiagramCreator
         /// <param name="args">引数文字列です。</param>
         private static void Main(string[] args)
         {
-            //// string assemblyFile = args[0];
-            var classDiagramCleator = ClassDiagramCleator.CreateInstance("ClassDiagramCreator.dll");
+            string assemblyFile = args[0];
+            var classDiagramCleator = ClassDiagramCleator.CreateInstance(assemblyFile);
             classDiagramCleator.OutputFile($"クラス図.puml");
         }
     }

@@ -11,7 +11,7 @@ namespace ClassDiagramCreator
     /// <summary>
     /// フィールド情報の拡張クラスです。
     /// </summary>
-    public static class FieldInfoExtentions
+    internal static class FieldInfoExtentions
     {
         /// <summary>
         /// クラス図用の文字列を作成します。
