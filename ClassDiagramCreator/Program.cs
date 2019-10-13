@@ -1,10 +1,8 @@
-﻿//-----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Program.cs" company="TODO">
-//     Company copyright tag.
+// Copyright (c) TODO. All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
-
-using System.Linq;
+// -----------------------------------------------------------------------
 
 namespace ClassDiagramCreator
 {
@@ -19,7 +17,7 @@ namespace ClassDiagramCreator
         /// <param name="args">引数文字列です。</param>
         private static void Main(string[] args)
         {
-            string assemblyFile = args[0];
+            //// string assemblyFile = args[0];
             var classDiagramCleator = ClassDiagramCleator.CreateInstance("ClassDiagramCreator.dll");
             classDiagramCleator.OutputFile($"クラス図.puml");
         }

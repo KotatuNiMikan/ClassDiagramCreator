@@ -1,8 +1,8 @@
-﻿//-----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="BaseTypeRelationshipCollection.cs" company="TODO">
-//     Company copyright tag.
+// Copyright (c) TODO. All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections;
@@ -62,7 +62,10 @@ namespace ClassDiagramCreator
             return this.collection.GetEnumerator();
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 型の列挙を取得します。
+        /// </summary>
+        /// <returns>型の列挙です。</returns>
         public IEnumerable<Type> GetTypeList()
         {
             return this.collection.SelectMany(x => x.ToTypeList());

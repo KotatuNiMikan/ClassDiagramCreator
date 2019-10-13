@@ -1,15 +1,18 @@
-﻿//-----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="ClassDiagramCleator.cs" company="TODO">
-//     Company copyright tag.
+// Copyright (c) TODO. All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
+
+[assembly: InternalsVisibleTo("Test.ClassDiagramCreator")]
 
 namespace ClassDiagramCreator
 {
@@ -47,7 +50,7 @@ namespace ClassDiagramCreator
         /// <summary>
         /// インスタンスを作成します。
         /// </summary>
-        /// <param name="assemblyFile">アセンブリーへのパスです。</param>        /// 
+        /// <param name="assemblyFile">アセンブリーへのパスです。</param>
         /// <returns>インスタンスです。</returns>
         public static ClassDiagramCleator CreateInstance(string assemblyFile)
         {
@@ -124,7 +127,7 @@ namespace ClassDiagramCreator
         {
             var umlText = new StringBuilder();
             umlText.AppendLine("@startuml");
-            umlText.AppendLine($"title {assembly.FullName} {DateTime.Now}");
+            umlText.AppendLine($"title {this.assembly.FullName} {DateTime.Now}");
             this.baseTypeRelationshipCollection.Select(x => x.ToString())
                 .Union(this.partOfRelationshipCollection.Select(x => x.ToString()))
                 .Distinct()

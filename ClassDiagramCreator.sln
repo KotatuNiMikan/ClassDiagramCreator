@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassDiagramCreator", "ClassDiagramCreator\ClassDiagramCreator.csproj", "{CE65DCE9-E6EE-44D1-B2F6-4302C2F9A555}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassDiagramCreator", "ClassDiagramCreator\ClassDiagramCreator.csproj", "{CE65DCE9-E6EE-44D1-B2F6-4302C2F9A555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.ClassDiagramCreator", "Test.ClassDiagramCreator\Test.ClassDiagramCreator.csproj", "{A58606FC-FECA-4484-8619-D800DBDE3591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CE65DCE9-E6EE-44D1-B2F6-4302C2F9A555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE65DCE9-E6EE-44D1-B2F6-4302C2F9A555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE65DCE9-E6EE-44D1-B2F6-4302C2F9A555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58606FC-FECA-4484-8619-D800DBDE3591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58606FC-FECA-4484-8619-D800DBDE3591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58606FC-FECA-4484-8619-D800DBDE3591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58606FC-FECA-4484-8619-D800DBDE3591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

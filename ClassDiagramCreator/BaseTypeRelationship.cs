@@ -1,8 +1,8 @@
-﻿//-----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="BaseTypeRelationship.cs" company="TODO">
-//     Company copyright tag.
+// Copyright (c) TODO. All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace ClassDiagramCreator
         /// <summary>
         /// インスタンスを初期化します。
         /// </summary>
-        /// <param name="target">対象クラス（子）</param>
+        /// <param name="target">対象クラス（子）です。</param>
         /// <param name="baseType">基底の型（親）です。</param>
         public BaseTypeRelationship(Type target, Type baseType)
         {
@@ -39,7 +39,7 @@ namespace ClassDiagramCreator
         public override string ToString()
         {
             var relationText = this.target.IsInterface == this.baseType.IsInterface ? "<|--" : "<|..";
-            return $"{baseType.Name.Split('`')[0]} {relationText} {target.Name.Split('`')[0]}";
+            return $"{this.baseType.Name.Split('`')[0]} {relationText} {this.target.Name.Split('`')[0]}";
         }
 
         /// <inheritdoc />

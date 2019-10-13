@@ -1,0 +1,9 @@
+{
+  "settings": {
+    "documentationRules": {
+      "companyName": "TODO",
+      "copyrightText": "Copyright (c) {companyName}. All rights reserved.",
+      "headerDecoration": "-----------------------------------------------------------------------"
+    }
+  }
+}
