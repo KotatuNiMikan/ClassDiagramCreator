@@ -53,7 +53,7 @@ namespace ClassDiagramCreator
         public override string ToString()
         {
             var relationText = this.target.IsInterface == this.baseType.IsInterface ? "<|--" : "<|..";
-            return $"{this.baseType.Name.Split('`')[0]} {relationText} {this.target.Name.Split('`')[0]}";
+            return $"\"{this.baseType.GetNameForUml()}\" {relationText} \"{this.target.GetNameForUml()}\"";
         }
 
         /// <summary>
